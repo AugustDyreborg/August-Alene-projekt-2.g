@@ -2,6 +2,9 @@ let startarmX, startarmY;
 let armradius = 100;
 let kastedesten = [];
 let g = 0.0982; //tyngdeacceleration
+let linjeX; 
+let linjeY = 850;
+let linjeBredde;
 
 function preload() {
     baggrund = loadImage('baggrund.png');
@@ -39,14 +42,23 @@ function draw() {
         s.y += s.vy; // bevægelse i y-retning
         s.vy += g; // fordi y bliver påvirket af tyngdekraft
 
-        fill("gray") // grå (haha)
+        strokeWeight(0)
+        fill("light_gray") // grå (haha)
         circle(s.x, s.y, 15) // stenen tegnes
 
         //fjerne sten hvis den ryger ud af mappet
-        if (s.y > 850) {
+        if (s.y > 1000) {
             kastedesten.splice(i, 1); 
         }
     }
+
+    //linje
+    stroke("red")
+    strokeWeight(5)
+    line(linjeX, linjeY, linjeX + linjeBredde, linjeY)
+
+
+
 }
 
 function keyPressed() {
@@ -60,4 +72,9 @@ function keyPressed() {
             vy: v0 * sin(armvinkelen),
         });
     }
+}
+
+function spawnLinje() {
+    linjeX = random(350, 1800);
+    linjeBredde = random(40, 150);
 }
