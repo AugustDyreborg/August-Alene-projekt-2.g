@@ -1,7 +1,7 @@
 let startarmX, startarmY;
 let armradius = 100;
 let kastedesten = [];
-let g = 0.05; //tyngdeacceleration
+let g = 0.055; //tyngdeacceleration
 let linjeX; 
 let linjeY = 850;
 let linjeBredde;
@@ -82,6 +82,6 @@ function keyPressed() {
 }
 
 function spawnLinje() {
-    linjeX = random(350, 1800);
+    linjeX = random(350, 1600);
     linjeBredde = random(40, 150);
 }
