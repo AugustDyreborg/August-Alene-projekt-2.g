@@ -1,7 +1,7 @@
 let startarmX, startarmY;
 let armradius = 100;
 let kastedesten = [];
-let g = 0.0982; //tyngdeacceleration
+let g = 0.05; //tyngdeacceleration
 let linjeX; 
 let linjeY = 850;
 let linjeBredde;
@@ -15,11 +15,14 @@ function setup() {
 
     startarmX = 200;
     startarmY = 550;
+
+    spawnLinje();
 }
 
 function draw() {
     background(baggrund);
 
+    stroke("black")
     strokeWeight(10);
     line(200, 700, 250, 870); //højre ben
     line(200, 700, 150, 870); //venstre ben 
@@ -50,14 +53,18 @@ function draw() {
         if (s.y > 1000) {
             kastedesten.splice(i, 1); 
         }
-    }
 
-    //linje
+            //tjekker om den stenen rammer den røde linje og fjerner kuglen
+            if(s.y >= linjeY && s.x >= linjeX && s.x <= linjeX + linjeBredde) {
+            kastedesten.splice(i,1);
+            spawnLinje();
+             }
+    }
+ 
+    //røde linje spawnning
     stroke("red")
     strokeWeight(5)
     line(linjeX, linjeY, linjeX + linjeBredde, linjeY)
-
-
 
 }
 
