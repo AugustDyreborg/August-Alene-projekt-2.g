@@ -1,7 +1,7 @@
 let startarmX, startarmY;
 let armradius = 100;
 let kastedesten = [];
-let g = 0.055; //tyngdeacceleration
+let g = 0.12; //tyngdeacceleration
 let linjeX; 
 let linjeY = 850;
 let linjeBredde;
@@ -71,7 +71,7 @@ function draw() {
 function keyPressed() {
     if (key === " ") { //space
         let armvinkelen = atan2(mouseY - startarmY, mouseX - startarmX);
-        let v0 = 8; //starthastighed
+        let v0 = 12; //starthastighed
         kastedesten.push({
             x: startarmX + armradius * cos(armvinkelen),
             y: startarmY + armradius * sin(armvinkelen),
